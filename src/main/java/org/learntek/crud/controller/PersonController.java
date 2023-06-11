@@ -51,18 +51,18 @@ public class PersonController {
 
 	@GetMapping("/person/{id}")
 	public ResponseEntity<?> getPerson(@PathVariable("id") int id) {
+		System.out.println("backend API called...........");
 		Person person = personService.getPerson(id);
+		ResponseEntity<Person> responseEntity = null;
 		if (person != null) {
-			ResponseEntity<Person> responseEntity = new ResponseEntity<Person>(person, HttpStatus.OK);
-			return responseEntity;
-		} else {
-			ResponseMessage response = new ResponseMessage();
-			response.setStatusCode("400");
-			response.setStatusMessage("Person Not found in DB ..........");
-			ResponseEntity<ResponseMessage> responseEntity = new ResponseEntity<ResponseMessage>(response,
-					HttpStatus.BAD_REQUEST);
-			return responseEntity;
+			responseEntity = new ResponseEntity<Person>(person, HttpStatus.OK);
+//			try {
+//				Thread.sleep(80000);
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//			}
 		}
+			return responseEntity;
 	}
 
 	@GetMapping("/person")

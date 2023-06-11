@@ -3,11 +3,14 @@
  */
 package org.learntek.crud.model;
 
+import java.io.Serializable;
+
 /**
  * @author HP
  *
  */
-public class Person {
+public class Person implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
 	private String city;
